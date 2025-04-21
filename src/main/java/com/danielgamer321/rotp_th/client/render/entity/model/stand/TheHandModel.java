@@ -190,7 +190,7 @@ public class TheHandModel extends HumanoidStandModel<TheHandEntity> {
 	public void prepareMobModel(@Nullable TheHandEntity entity, float walkAnimPos, float walkAnimSpeed, float partialTick) {
 		super.prepareMobModel(entity, walkAnimPos, walkAnimSpeed, partialTick);
 		if (eraseEffect != null) {
-			eraseEffect.visible = entity != null && entity.isErasing();
+			eraseEffect.visible = false;
 		}
 	}
 

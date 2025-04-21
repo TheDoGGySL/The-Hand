@@ -1,9 +1,11 @@
 package com.danielgamer321.rotp_th.action.stand;
 
+import com.danielgamer321.rotp_th.client.particle.CustomEraseHelper;
 import com.danielgamer321.rotp_th.entity.stand.stands.TheHandEntity;
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
+import com.github.standobyte.jojo.client.ClientUtil;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.entity.stand.StandPose;
@@ -12,6 +14,7 @@ import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -53,6 +56,9 @@ public class TheHandEraseItem extends StandEntityAction {
                     user.getOffhandItem().shrink(1);
                 }
             }
+        }
+        if (world.isClientSide() && userPower.getUser() != null && ClientUtil.canSeeStands()) {
+            CustomEraseHelper.createEraseParticle(standEntity, Hand.MAIN_HAND);
         }
     }
 

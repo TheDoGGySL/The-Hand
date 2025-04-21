@@ -1,5 +1,6 @@
 package com.danielgamer321.rotp_th;
 
+import com.danielgamer321.rotp_th.init.InitParticles;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +29,7 @@ public class RotpTheHandAddon {
         InitSounds.SOUNDS.register(modEventBus);
         InitStands.ACTIONS.register(modEventBus);
         InitStands.STANDS.register(modEventBus);
+        InitParticles.PARTICLES.register(modEventBus);
     }
 
     public static Logger getLogger() {

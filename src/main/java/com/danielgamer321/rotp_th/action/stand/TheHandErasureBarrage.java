@@ -1,10 +1,12 @@
 package com.danielgamer321.rotp_th.action.stand;
 
 import com.danielgamer321.rotp_th.RotpTheHandConfig;
+import com.danielgamer321.rotp_th.client.particle.CustomEraseHelper;
 import com.danielgamer321.rotp_th.entity.stand.stands.TheHandEntity;
 import com.github.standobyte.jojo.action.ActionTarget;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
 import com.github.standobyte.jojo.action.stand.StandEntityMeleeBarrage;
+import com.github.standobyte.jojo.client.ClientUtil;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.entity.stand.StandPose;
@@ -15,6 +17,7 @@ import com.github.standobyte.jojo.util.mc.damage.StandEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeMod;
 
@@ -48,6 +51,9 @@ public class TheHandErasureBarrage extends StandEntityMeleeBarrage {
         }
         else {
             theHand.somethingWasErased(true);
+        }
+        if (world.isClientSide() && userPower.getUser() != null && ClientUtil.canSeeStands()) {
+            CustomEraseHelper.createEraseParticle(standEntity, Hand.MAIN_HAND);
         }
     }
 
